@@ -8,17 +8,12 @@ const createPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
-  const posts = await Post.find()
-    .sort({ createdAt: -1 })
-    .populate("author", "username");
+  const posts = await Post.find().sort({ createdAt: -1 }).populate("username");
   res.json(posts);
 };
 
 const getPost = async (req, res) => {
-  const post = await Post.findById(req.params.id).populate(
-    "author",
-    "username"
-  );
+  const post = await Post.findById(req.params.id).populate("username");
   res.json(post);
 };
 

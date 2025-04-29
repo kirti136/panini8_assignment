@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: 'http://localhost:5173/', 
+  origin: ['http://localhost:5173'],
   credentials: true
 }));
 app.use(express.json());
@@ -21,6 +21,10 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 
 connectDB();
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// ✅ For local dev — comment this out if deploying on Vercel
+// app.listen(PORT, () => {
+//   console.log(`Server running on ${PORT}`);
+// });
+
+// ✅ For Vercel — uncomment this if deploying on Vercel
+module.exports = app;

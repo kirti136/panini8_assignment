@@ -2,7 +2,6 @@ const express = require("express");
 const {
   createPost,
   getPosts,
-  getPost,
   updatePost,
   deletePost,
   toggleLike,
@@ -13,7 +12,6 @@ const router = express.Router();
 
 router.get("/", getPosts);
 router.post("/", authenticateToken, createPost);
-router.get("/:id", getPost);
 router.put("/:id", authenticateToken, updatePost);
 router.delete("/:id", authenticateToken, deletePost);
 router.post("/:id/like", authenticateToken, toggleLike);

@@ -8,13 +8,8 @@ const createPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
-  const posts = await Post.find().sort({ createdAt: -1 }).populate("username");
+  const posts = await Post.find().sort({ createdAt: -1 });
   res.json(posts);
-};
-
-const getPost = async (req, res) => {
-  const post = await Post.findById(req.params.id).populate("username");
-  res.json(post);
 };
 
 const updatePost = async (req, res) => {
@@ -47,7 +42,6 @@ const toggleLike = async (req, res) => {
 module.exports = {
   createPost,
   getPosts,
-  getPost,
   updatePost,
   deletePost,
   toggleLike,

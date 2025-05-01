@@ -39,10 +39,16 @@ const toggleLike = async (req, res) => {
   res.json(post);
 };
 
+const selfPost = async (req, res) => {
+  const posts = await Post.find({ author: req.user.id });
+  res.json(posts);
+};
+
 module.exports = {
   createPost,
   getPosts,
   updatePost,
   deletePost,
   toggleLike,
+  selfPost,
 };
